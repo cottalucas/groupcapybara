@@ -3,86 +3,213 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Capybara Group</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Group Capybara</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            background-color: #000;  /* Black background for elegance */
-            color: #fff;  /* White text for contrast */
-            font-family: 'Helvetica Neue', Arial, sans-serif;
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #000000;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            padding: 2em;
-            text-align: center;
         }
-        header {
-            margin-bottom: 2em;
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
         }
         .logo {
-            max-width: 150px;
-            margin-bottom: 20px;
+            width: 30px;
+            height: auto;
+            margin-right: 10px;
         }
-        .header-title {
-            font-size: 2.5em;
-            font-weight: bold;
+        .company-name {
+            font-size: 18px;
+            font-weight: 700;
+            color: #ffffff;
         }
-        .sub-header {
-            font-size: 1.3em;
-            margin-top: 10px;
-            color: #ccc;  /* Light gray for the subheading */
-        }
-        .venture-list {
-            margin-top: 30px;
-            list-style: none;
-            padding: 0;
-            width: 100%;
-            max-width: 600px;
-        }
-        .venture-list li {
-            background: #1a1a1a;
-            margin: 10px 0;
-            padding: 20px;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            transition: transform 0.3s;
-        }
-        .venture-list li:hover {
-            transform: scale(1.05);
-        }
-        a {
+        .contact-link {
+            font-size: 14px;
+            color: #ffffff;
             text-decoration: none;
-            color: #f7b731;  /* Bright accent color for links */
-            font-weight: bold;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border: 1px solid transparent;
+            border-radius: 20px;
         }
-        footer {
-            margin-top: 40px;
-            font-size: 0.8em;
-            color: #888;
+        .contact-link:hover {
+            color: #ffd700;
+            border-color: #ffd700;
+            background-color: rgba(255, 215, 0, 0.1);
+        }
+        .hero {
+            flex-grow: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .hero-content {
+            max-width: 50%;
+        }
+        .innovating {
+            font-size: 14px;
+            color: #ffffff;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 8px;
+        }
+        .innovating::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(45deg, #6a0dad, #ffd700, #6a0dad);
+            background-size: 200% 200%;
+            animation: gradientFlow 5s ease infinite;
+        }
+        h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #ffffff;
+            line-height: 1.2;
+        }
+        .subtitle {
+            font-size: 18px;
+            color: #ffffff;
+            max-width: 700px;
+            line-height: 1.6;
+        }
+        .gradient-text {
+            background: linear-gradient(45deg, #6a0dad, #ffd700, #6a0dad);
+            background-size: 200% 200%;
+            animation: gradientFlow 5s ease infinite;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+        @keyframes gradientFlow {
+            0% {background-position: 0% 50%;}
+            50% {background-position: 100% 50%;}
+            100% {background-position: 0% 50%;}
+        }
+        #galaxy-canvas {
+            width: 500px;
+            height: 500px;
+        }
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero-content {
+                max-width: 100%;
+                margin-bottom: 40px;
+            }
+            #galaxy-canvas {
+                width: 300px;
+                height: 300px;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="container">
+        <nav>
+            <div class="logo-container">
+                <img src="logo.png" alt="Group Capybara Logo" class="logo">
+                <div class="company-name">Group Capybara</div>
+            </div>
+            <a href="mailto:lucascotta@groupcapybara.com" class="contact-link">Contact Us</a>
+        </nav>
+        <main class="hero">
+            <div class="hero-content">
+                <div class="innovating">Innovating for a better tomorrow</div>
+                <h1>Unleash the Power of <span class="gradient-text">Capybara</span></h1>
+                <p class="subtitle">We empower the World with cutting-edge technology and innovative solutions for modern society.</p>
+            </div>
+            <canvas id="galaxy-canvas"></canvas>
+        </main>
+    </div>
+    <script>
+        const canvas = document.getElementById('galaxy-canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = 500;
+        canvas.height = 500;
 
-    <!-- Header Section -->
-    <header>
-        <img src="capybara.png" alt="Capybara Group Logo" class="logo">
-        <div class="header-title">Capybara Group</div>
-        <div class="sub-header">Tech Solutions for the Modern World</div>
-    </header>
+        const particles = [];
+        const numParticles = 10000;
+        let hue = 0;
 
-    <!-- List of Ventures -->
-    <ul class="venture-list">
-        <li><a href="https://yourventure1.com">Venture 1: Innovative Tech Solution</a></li>
-        <li><a href="https://yourventure2.com">Venture 2: Mobile App Development</a></li>
-        <li><a href="https://yourventure3.com">Venture 3: Game Studio</a></li>
-    </ul>
+        class Particle {
+            constructor() {
+                this.x = canvas.width / 2;
+                this.y = canvas.height / 2;
+                this.radius = Math.random() * 2;
+                this.angle = Math.random() * Math.PI * 2;
+                this.distance = Math.random() * canvas.width / 2;
+                this.speed = 0.00005 + Math.random() * 0.00005;
+                this.lastPos = {x: this.x, y: this.y};
+                this.color = `hsl(${hue}, 100%, 50%)`;
+            }
 
-    <!-- Footer -->
-    <footer>© 2024 Capybara Group. All rights reserved.</footer>
+            update() {
+                this.lastPos = {x: this.x, y: this.y};
+                this.angle += this.speed;
+                this.x = canvas.width / 2 + Math.cos(this.angle) * this.distance;
+                this.y = canvas.height / 2 + Math.sin(this.angle) * this.distance;
+            }
 
+            draw() {
+                ctx.beginPath();
+                ctx.moveTo(this.lastPos.x, this.lastPos.y);
+                ctx.lineTo(this.x, this.y);
+                ctx.strokeStyle = this.color;
+                ctx.stroke();
+            }
+        }
+
+        function init() {
+            for (let i = 0; i < numParticles; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animate() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+            }
+            
+            hue += 0.1;
+            requestAnimationFrame(animate);
+        }
+
+        init();
+        animate();
+    </script>
 </body>
 </html>
